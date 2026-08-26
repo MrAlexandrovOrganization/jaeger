@@ -1,7 +1,7 @@
 networks:
-  monitoring-net:
+  jaeger-net:
     external: true
-    name: monitoring-net
+    name: jaeger-net
 
 services:
   jaeger:
@@ -13,7 +13,7 @@ services:
     volumes:
       - ./jaeger.yaml:/etc/jaeger/config.yaml:ro
     networks:
-      - monitoring-net
+      - jaeger-net
     extends:
       file: docker-compose.base.yml
       service: base
