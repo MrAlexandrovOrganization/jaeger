@@ -1,0 +1,24 @@
+networks:
+  monitoring-net:
+    external: true
+    name: monitoring-net
+
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2.20.0
+    restart: unless-stopped
+    command: ["--config=/etc/jaeger/config.yaml"]
+    ports:
+      - "127.0.0.1:16686:16686"
+    volumes:
+      - ./jaeger.yaml:/etc/jaeger/config.yaml:ro
+    networks:
+      - monitoring-net
+    extends:
+      file: docker-compose.base.yml
+      service: base
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1.0g
