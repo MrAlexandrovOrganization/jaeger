@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate docker-compose
-        run: docker compose config -q
+        run: make config-check
 
   deploy:
     name: Deploy to VM
