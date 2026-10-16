@@ -5,6 +5,7 @@ networks:
 
 services:
   jaeger:
+    container_name: "${CONTAINER_NAME_PREFIX:-}jaeger"
     image: jaegertracing/jaeger:${JAEGER_VERSION:?Run via make}
     restart: unless-stopped
     command: ["--config=/etc/jaeger/config.yaml"]
