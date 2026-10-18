@@ -16,7 +16,7 @@ services:
     networks:
       - jaeger-net
     extends:
-      file: docker-compose.base.yml
+      file: compose/docker-compose.base.yml
       service: base
     deploy:
       resources:
