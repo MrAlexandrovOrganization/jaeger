@@ -6,11 +6,13 @@ networks:
 services:
   jaeger:
     container_name: "${CONTAINER_NAME_PREFIX:-}jaeger"
-    image: jaegertracing/jaeger:${JAEGER_VERSION:?Run via make}
+    image: ${JAEGER_IMAGE:?Run via make}
     restart: unless-stopped
     command: ["--config=/etc/jaeger/config.yaml"]
     ports:
       - "127.0.0.1:16686:16686"
+      - "127.0.0.1:4317:4317"
+      - "127.0.0.1:4318:4318"
     volumes:
       - ./jaeger.yaml:/etc/jaeger/config.yaml:ro
     networks:
