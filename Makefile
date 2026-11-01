@@ -49,3 +49,7 @@ deploy: active-check
 	$(MAKE) up
 
 check: config-check
+
+.PHONY: ci-deploy
+ci-deploy:
+	python3 scripts/ci-deploy.py
